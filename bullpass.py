@@ -70,6 +70,11 @@ class Bullpass():
             cursor.execute(sql)
             result = cursor.fetchall()
             print(tabulate(result, tablefmt='psql'))
+            sql2 = f"SELECT password FROM general_passwords WHERE website LIKE '%{site}%'"
+            cursor.execute(sql2)
+            result = cursor.fetchall()
+            pyperclip.copy(f'{result[0][0]}')
+            print("\nPassword copied to clipboard!")
             if user_input.lower() == "b":
                 pass
         elif user_input.lower() == "2":
@@ -78,6 +83,11 @@ class Bullpass():
             cursor.execute(sql)
             result = cursor.fetchall()
             print(tabulate(result, tablefmt='psql'))
+            sql2 = f"SELECT password FROM general_passwords WHERE user_name LIKE '%{user}%'"
+            cursor.execute(sql2)
+            result = cursor.fetchall()
+            pyperclip.copy(f'{result[0][0]}')
+            print("\nPassword copied to clipboard!")
             if user_input.lower() == "b":
                 pass
         elif user_input.lower() == "3":
@@ -86,6 +96,11 @@ class Bullpass():
             cursor.execute(sql)
             result = cursor.fetchall()
             print(tabulate(result, tablefmt='psql'))
+            sql2 = f"SELECT password FROM general_passwords WHERE password LIKE '%{passw}%'"
+            cursor.execute(sql2)
+            result = cursor.fetchall()
+            pyperclip.copy(f'{result[0][0]}')
+            print("\nPassword copied to clipboard!")
             if user_input.lower() == "b":
                 pass
 
