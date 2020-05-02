@@ -20,7 +20,8 @@ Enter password length: 10
 | New Password | H6mPF$BxqU |
 +--------------+------------+
 
-[Y/n]y
+[Y/n]
+y
 
 Enter the website's name: site4
 
