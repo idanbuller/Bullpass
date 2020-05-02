@@ -162,9 +162,9 @@ class Bullpass():
 
 db = mysql.connector.connect(
   host="localhost",
-  user="root",
-  passwd="Idanid1",
-  database="idan_passwords")
+  user="user",
+  passwd="password",
+  database="database")
 cursor = db.cursor()
 
 while True:
