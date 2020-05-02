@@ -13,7 +13,7 @@ Bull pass is an updating project of password generator framework.
 +-----+-----+--------+------+--------+--------+--------+
 >> Enter Your Choice (b = back): 1
 
-Enter password length: 10
+>> Enter password length: 10
 +--------------+------------+
 |  -- OK? --   |     --     |
 +--------------+------------+
@@ -23,9 +23,9 @@ Enter password length: 10
 [Y/n]
 y
 
-Enter the website's name: site4
+>> Enter the website's name: site4
 
-Enter the user name: user4
+>> Enter the user name: user4
 
 Row added -
 ('site4', 'user4', 'H6mPF$BxqU', 11)
@@ -46,12 +46,12 @@ Password copied to clipboard!
 +-----+-----+--------+------+--------+--------+--------+
 >> Enter Your Choice (b = back): 2
 
-Type your password: 
+>> Type your password: 
 password5
 
-Enter the website's name: site5
+>> Enter the website's name: site5
 
-Enter the user name: user5
+>> Enter the user name: user5
 
 Row added -
 ('site5', 'user5', 'password5', 12)
