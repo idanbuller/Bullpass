@@ -27,6 +27,7 @@ Enter the website's name: site4
 Enter the user name: user4
 Row added -
 ('site4', 'user4', 'H6mPF$BxqU', 11)
+
 Password copied to clipboard!
 
 ```
@@ -51,6 +52,7 @@ Enter the website's name: site5
 Enter the user name: user5
 Row added -
 ('site5', 'user5', 'password5', 12)
+
 Password copied to clipboard!
 ```
 
