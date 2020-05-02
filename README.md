@@ -25,6 +25,7 @@ Enter password length: 10
 Enter the website's name: site4
 
 Enter the user name: user4
+
 Row added -
 ('site4', 'user4', 'H6mPF$BxqU', 11)
 
@@ -50,6 +51,7 @@ password5
 Enter the website's name: site5
 
 Enter the user name: user5
+
 Row added -
 ('site5', 'user5', 'password5', 12)
 
@@ -116,6 +118,7 @@ Choose row to delete by ID -
 | site5 | user5 | password5  | 12 |
 +-------+-------+------------+----+
 >> Enter id: 12
+
 Row Deleted -
 ('site5', 'user5', 'password5', 12)
 ```
@@ -138,6 +141,7 @@ Row Deleted -
 >> Enter Your Choice: 1
 >> Enter SITE name to change: site4
 >> Enter new SITE name: site5
+
 Row Updated -
 ('site5', 'user4', 'H6mPF$BxqU', 11)
 ```
