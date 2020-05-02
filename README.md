@@ -1,6 +1,6 @@
 # Bullpass
 
-Bull pass is an updating project...
+Bull pass is an updating project of password generator framework.
 
 ## New
 
