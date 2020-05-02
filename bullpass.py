@@ -3,6 +3,7 @@ import random
 from tabulate import tabulate
 from prettytable import PrettyTable
 import csv
+import pyperclip
 
 
 class Bullpass():
@@ -34,6 +35,8 @@ class Bullpass():
             result = cursor.fetchall()
             for i in result:
                 print(f"Row added -\n{i}")
+            pyperclip.copy(f'{self.newpass}')
+            print("Password copied to clipboard!")
         elif ok.lower() == "n":
             pass
 
@@ -51,6 +54,8 @@ class Bullpass():
         result = cursor.fetchall()
         for i in result:
             print(f"Row added -\n{i}")
+        pyperclip.copy(f'{the_password}')
+        print("Password copied to clipboard!")
 
 
     def search_pass(self):
