@@ -26,11 +26,11 @@ class Bullpass():
         if ok.lower() == "y":
             name_of_the_site = str(input("\n\rEnter the website's name: "))
             user_name = str(input("\n\rEnter the user name: "))
-            sql = "INSERT INTO test_table (website, user_name, password) VALUES (%s, %s, %s)"
+            sql = "INSERT INTO general_passwords (website, user_name, password) VALUES (%s, %s, %s)"
             val = (name_of_the_site, user_name, self.newpass)
             cursor.execute(sql, val)
             db.commit()
-            cursor.execute(f"SELECT * FROM test_table WHERE website = '{name_of_the_site}' ")
+            cursor.execute(f"SELECT * FROM general_passwords WHERE website = '{name_of_the_site}' ")
             result = cursor.fetchall()
             for i in result:
                 print(f"Row added -\n{i}")
@@ -43,11 +43,11 @@ class Bullpass():
         the_password = str(input("\n\rType your password: \n\r"))
         name_of_the_site = str(input("\n\rEnter the website's name: "))
         user_name = str(input("\n\rEnter the user name: "))
-        sql = "INSERT INTO test_table (website, user_name, password) VALUES (%s, %s, %s)"
+        sql = "INSERT INTO general_passwords (website, user_name, password) VALUES (%s, %s, %s)"
         val = (name_of_the_site, user_name, the_password)
         cursor.execute(sql, val)
         db.commit()
-        cursor.execute(f"SELECT * FROM test_table WHERE website = '{name_of_the_site}' ")
+        cursor.execute(f"SELECT * FROM general_passwords WHERE website = '{name_of_the_site}' ")
         result = cursor.fetchall()
         for i in result:
             print(f"Row added -\n{i}")
@@ -61,28 +61,32 @@ class Bullpass():
         user_input = str(input(">> Enter Your Choice: "))
         if user_input.lower() == "1":
             site = str(input(">> Enter SITE name: "))
-            sql = f"SELECT * FROM test_table WHERE website LIKE '{site}'"
+            sql = f"SELECT * FROM general_passwords WHERE website LIKE '{site}'"
             cursor.execute(sql)
             result = cursor.fetchall()
             print(tabulate(result, tablefmt='psql'))
-        elif user_input.lower() == "b":
-            pass
+            if user_input.lower() == "b":
+                pass
         elif user_input.lower() == "2":
             user = str(input(">> Enter USER name: "))
-            sql = f"SELECT * FROM test_table WHERE user_name LIKE '{user}'"
+            sql = f"SELECT * FROM general_passwords WHERE user_name LIKE '{user}'"
             cursor.execute(sql)
             result = cursor.fetchall()
             print(tabulate(result, tablefmt='psql'))
+            if user_input.lower() == "b":
+                pass
         elif user_input.lower() == "3":
             passw = str(input(">> Enter PASSWORD name: "))
-            sql = f"SELECT * FROM test_table WHERE user_name LIKE '{passw}'"
+            sql = f"SELECT * FROM general_passwords WHERE user_name LIKE '{passw}'"
             cursor.execute(sql)
             result = cursor.fetchall()
             print(tabulate(result, tablefmt='psql'))
+            if user_input.lower() == "b":
+                pass
 
 
     def show_pass(self):
-        sql = "SELECT * FROM test_table"
+        sql = "SELECT * FROM general_passwords"
         cursor.execute(sql)
         result = cursor.fetchall()
         print(tabulate(result, tablefmt='psql'))
@@ -90,25 +94,27 @@ class Bullpass():
 
 
     def delete_pass(self):
-        sql = "SELECT * FROM test_table"
+        sql = "SELECT * FROM general_passwords"
         cursor.execute(sql)
         result = cursor.fetchall()
         print("Choose row to delete by ID -")
         print(tabulate(result, tablefmt='psql'))
         user_id = str(input(">> Enter id: "))
-        sql2 = f"SELECT * FROM test_table WHERE id = {user_id}"
+        sql2 = f"SELECT * FROM general_passwords WHERE id = {user_id}"
         cursor.execute(sql2)
         result2 = cursor.fetchall()
-        sql1 = f"DELETE FROM test_table WHERE id = {user_id}"
+        sql1 = f"DELETE FROM general_passwords WHERE id = {user_id}"
         cursor.execute(sql1)
         db.commit()
         for x in result2:
             print(f"Row Deleted -\n{x}")
+        if user_input.lower() == "b":
+            pass
 
 
     def export_pass(self):
         try:
-            cursor.execute(f"SELECT * FROM test_table")
+            cursor.execute(f"SELECT * FROM general_passwords")
             with open(f"passwords.csv", "w") as outfile:
                 writer = csv.writer(outfile, quoting=csv.QUOTE_NONNUMERIC)
                 writer.writerow(col[0] for col in cursor.description)
@@ -129,42 +135,48 @@ class Bullpass():
         if user_input.lower() == "1":
             site = str(input(">> Enter SITE name to change: "))
             new_site = str(input(">> Enter new SITE name: "))
-            sql = f"UPDATE test_table SET website = '{new_site}' WHERE website = '{site}'"
+            sql = f"UPDATE general_passwords SET website = '{new_site}' WHERE website = '{site}'"
             cursor.execute(sql)
             db.commit()
-            cursor.execute(f"SELECT * FROM test_table WHERE website = '{new_site}' ")
+            cursor.execute(f"SELECT * FROM general_passwords WHERE website = '{new_site}' ")
             result = cursor.fetchall()
             for i in result:
                 print(f"Row Updated -\n{i}")
+            if user_input.lower() == "b":
+                pass
         elif user_input.lower() == "b":
             pass
         elif user_input.lower() == "2":
             user = str(input(">> Enter USER name to change: "))
             new_user = str(input(">> Enter new USER name: "))
-            sql = f"UPDATE test_table SET user_name = '{new_user}' WHERE user_name = '{user}'"
+            sql = f"UPDATE general_passwords SET user_name = '{new_user}' WHERE user_name = '{user}'"
             cursor.execute(sql)
             db.commit()
-            cursor.execute(f"SELECT * FROM test_table WHERE user_name = '{new_user}' ")
+            cursor.execute(f"SELECT * FROM general_passwords WHERE user_name = '{new_user}' ")
             result = cursor.fetchall()
             for i in result:
                 print(f"Row Updated -\n{i}")
+            if user_input.lower() == "b":
+                pass
         elif user_input.lower() == "3":
             passw = str(input(">> Enter PASSWORD name to change: "))
             new_passw = str(input(">> Enter new PASSWORD name: "))
-            sql = f"UPDATE test_table SET password = '{new_passw}' WHERE password = '{passw}'"
+            sql = f"UPDATE general_passwords SET password = '{new_passw}' WHERE password = '{passw}'"
             cursor.execute(sql)
             db.commit()
-            cursor.execute(f"SELECT * FROM test_table WHERE password = '{new_passw}' ")
+            cursor.execute(f"SELECT * FROM general_passwords WHERE password = '{new_passw}' ")
             result = cursor.fetchall()
             for i in result:
                 print(f"Row Updated -\n{i}")
+            if user_input.lower() == "b":
+                pass
 
 
 db = mysql.connector.connect(
   host="localhost",
-  user="user",
-  passwd="password",
-  database="database")
+  user="root",
+  passwd="Idanid1",
+  database="idan_passwords")
 cursor = db.cursor()
 
 while True:
