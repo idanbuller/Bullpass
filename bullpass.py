@@ -16,7 +16,7 @@ class Bullpass():
     def add_new_pass(self):
         if user_input.lower() == "b":
             pass
-        length = int(input("\n\rEnter password length: "))
+        length = int(input("\n\r>> Enter password length: "))
         for c in range(length):
             self.newpass += str(random.choice(self.string))
         x = PrettyTable()
@@ -25,8 +25,8 @@ class Bullpass():
         print(x)
         ok = str(input("\n[Y/n]\n"))
         if ok.lower() == "y":
-            name_of_the_site = str(input("\n\rEnter the website's name: "))
-            user_name = str(input("\n\rEnter the user name: "))
+            name_of_the_site = str(input("\n\r>> Enter the website's name: "))
+            user_name = str(input("\n\r>> Enter the user name: "))
             sql = "INSERT INTO general_passwords (website, user_name, password) VALUES (%s, %s, %s)"
             val = (name_of_the_site, user_name, self.newpass)
             cursor.execute(sql, val)
@@ -40,12 +40,13 @@ class Bullpass():
         elif ok.lower() == "n":
             pass
 
+        
     def add_old_pass(self):
         if user_input.lower() == "b":
             pass
-        the_password = str(input("\n\rType your password: \n\r"))
-        name_of_the_site = str(input("\n\rEnter the website's name: "))
-        user_name = str(input("\n\rEnter the user name: "))
+        the_password = str(input("\n\r>> Type your password: \n\r"))
+        name_of_the_site = str(input("\n\r>> Enter the website's name: "))
+        user_name = str(input("\n\r>> Enter the user name: "))
         sql = "INSERT INTO general_passwords (website, user_name, password) VALUES (%s, %s, %s)"
         val = (name_of_the_site, user_name, the_password)
         cursor.execute(sql, val)
