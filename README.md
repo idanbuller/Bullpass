@@ -79,6 +79,8 @@ Password copied to clipboard!
 +-------+-------+-----------+---+
 | site1 | user1 | password1 | 1 |
 +-------+-------+-----------+---+
+
+Password copied to clipboard!
 ```
 
 ## Show
